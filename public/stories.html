@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Success Stories - LifeSaver Blood Bank</title>
+  <script defer src="js/common.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#dc2626',  /* Lighter red variation */
+            secondary: '#fef2f2', /* Very light red for background */
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-primary text-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center">
+      <h1 class="text-2xl font-bold">LifeSaver Blood Bank</h1>
+      <nav class="mt-2 sm:mt-0">
+        <ul class="flex flex-wrap gap-4 text-sm font-medium">
+          <li><a href="index.html" class="hover:text-gray-200">Home</a></li>
+          <li><a href="donate.html" class="hover:text-gray-200">Donate</a></li>
+          <li><a href="request.html" class="hover:text-gray-200">Request</a></li>
+          <li><a href="requests.html" class="hover:text-gray-200">Requests</a></li>
+          <li><a href="volunteer.html" class="hover:text-gray-200">Volunteer</a></li>
+          <li><a href="track.html" class="hover:text-gray-200">Track Donors</a></li>
+          <li><a href="health.html" class="hover:text-gray-200">Health Tracker</a></li>
+          <li><a href="stories.html" class="hover:text-gray-200">Success Stories</a></li>
+          <li><a href="signin.html" id="signinLink" class="hover:text-gray-200">Sign In</a></li>
+          <li><a href="profile.html" id="profileLink" class="hover:text-gray-200">My Profile</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="py-12 px-4">
+    <section class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg border border-primary">
+      <h2 class="text-3xl font-bold text-primary mb-4">Inspiring Success Stories</h2>
+      <p class="text-gray-700 mb-6">Read the incredible stories of individuals who made a difference through blood donation. Their contributions have saved lives and inspired others to follow their lead.</p>
+
+      <!-- Story 1 -->
+      <article class="story mb-6 p-6 bg-secondary rounded-lg shadow-md">
+        <h3 class="text-2xl font-semibold text-primary mb-2">John's Story - Saving a Life in an Emergency</h3>
+        <p class="text-gray-800 mb-4">John had always been a regular blood donor. But one day, he received an urgent call from the hospital asking for his blood type, O-negative. The emergency situation saved a child's life, and John felt proud knowing that he had made such an impact.</p>
+        <p><strong>Blood Type:</strong> O-</p>
+        <p><strong>Location:</strong> Bhimavaram</p>
+        <p><strong>Date of Donation:</strong> April 12, 2025</p>
+      </article>
+
+      <!-- Story 2 -->
+      <article class="story mb-6 p-6 bg-secondary rounded-lg shadow-md">
+        <h3 class="text-2xl font-semibold text-primary mb-2">Mary's Story - Helping a Mother During Childbirth</h3>
+        <p class="text-gray-800 mb-4">Mary's donation was a critical life-saving act during a difficult childbirth. After donating, she was informed that her blood had been used to save the life of a mother who had been in critical condition. Her actions proved how vital blood donations are.</p>
+        <p><strong>Blood Type:</strong> A+</p>
+        <p><strong>Location:</strong> Vijayawada</p>
+        <p><strong>Date of Donation:</strong> March 30, 2025</p>
+      </article>
+
+      <!-- Story 3 -->
+      <article class="story mb-6 p-6 bg-secondary rounded-lg shadow-md">
+        <h3 class="text-2xl font-semibold text-primary mb-2">Rahul's Story - A Father's Lifesaver</h3>
+        <p class="text-gray-800 mb-4">Rahul was able to save his father's life by donating blood during a critical surgery. His father was battling a severe condition and needed multiple units of blood. Thanks to Rahul's quick decision, his father survived and recovered. This experience not only saved his father's life but also encouraged Rahul to become a regular blood donor.</p>
+        <p><strong>Blood Type:</strong> B+</p>
+        <p><strong>Location:</strong> Hyderabad</p>
+        <p><strong>Date of Donation:</strong> February 15, 2025</p>
+      </article>
+
+      <!-- Story 4 -->
+      <article class="story mb-6 p-6 bg-secondary rounded-lg shadow-md">
+        <h3 class="text-2xl font-semibold text-primary mb-2">Simran's Story - A Life Reborn Through Blood Donation</h3>
+        <p class="text-gray-800 mb-4">Simran, a young woman, donated blood during a local camp. Little did she know that her donation would go on to save a newborn baby girl who was born prematurely. Her blood was used to stabilize the baby's condition, and Simran received a heartfelt thank you from the baby's parents. It was a moment that made Simran realize the true power of blood donation.</p>
+        <p><strong>Blood Type:</strong> O+</p>
+        <p><strong>Location:</strong> Pune</p>
+        <p><strong>Date of Donation:</strong> January 8, 2025</p>
+      </article>
+
+      <!-- Call to Action -->
+      <div class="text-center">
+        <button class="btn bg-primary hover:bg-red-700 text-white font-semibold py-3 px-8 rounded-lg transition" onclick="window.location.href='donate.html'">Become a Donor</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-secondary text-red-800 text-center py-6 text-sm border-t border-red-200">
+    <p>&copy; 2025 LifeSaver Blood Bank. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

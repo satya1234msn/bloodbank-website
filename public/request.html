@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Request Blood - LifeSaver Blood Bank</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#dc2626',
+            secondary: '#fef2f2',
+          },
+        }
+      }
+    }
+  </script>
+  <script defer src="js/common.js"></script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-primary text-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center">
+      <h1 class="text-2xl font-bold">LifeSaver Blood Bank</h1>
+      <nav class="mt-2 sm:mt-0">
+        <ul class="flex flex-wrap gap-4 text-sm font-medium">
+          <li><a href="index.html" class="hover:text-gray-200">Home</a></li>
+          <li><a href="donate.html" class="hover:text-gray-200">Donate</a></li>
+          <li><a href="request.html" class="hover:text-gray-200">Request</a></li>
+          <li><a href="requests.html" class="hover:text-gray-200">Requests</a></li>
+          <li><a href="track.html" class="hover:text-gray-200">Track</a></li>
+          <li><a href="health.html" class="hover:text-gray-200">Health</a></li>
+          <li><a href="stories.html" class="hover:text-gray-200">Stories</a></li>
+          <li><a href="signin.html" id="signinLink" class="hover:text-gray-200">Sign In</a></li>
+          <li><a href="profile.html" id="profileLink" class="hover:text-gray-200">My Profile</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Emotional Highlight -->
+  <section class="bg-secondary py-16 px-4">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      <img src="https://img.freepik.com/free-vector/emergency-call-concept-illustration_114360-7333.jpg" alt="Blood Emergency" class="w-full md:w-1/2 rounded-lg shadow-lg">
+      <div>
+        <h2 class="text-4xl font-bold text-primary mb-4">In Critical Moments, Every Drop Counts 💔</h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          When lives hang in the balance, time is everything. Whether it's an accident, surgery, or illness—blood requests save lives in real-time.
+        </p>
+        <p class="mt-4 text-gray-700">
+          Please complete the form below to request blood. We’ll match you with a donor as soon as possible.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Request Form -->
+  <main class="py-16 px-4">
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-xl border border-red-100">
+      <h2 class="text-3xl font-bold text-primary mb-6 text-center">Blood Request Form</h2>
+      <form id="requestForm" class="space-y-5">
+        <div>
+          <label for="name" class="block font-medium">Your Name</label>
+          <input type="text" id="name" name="name" required class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-primary focus:outline-none" />
+        </div>
+        <div>
+          <label for="bloodType" class="block font-medium">Blood Type Needed</label>
+          <select id="bloodType" name="bloodType" required class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-primary focus:outline-none">
+            <option value="">Select blood type</option>
+            <option>A+</option><option>A-</option>
+            <option>B+</option><option>B-</option>
+            <option>O+</option><option>O-</option>
+            <option>AB+</option><option>AB-</option>
+          </select>
+        </div>
+        <div>
+          <label for="location" class="block font-medium">Location (City/State)</label>
+          <input type="text" id="location" name="location" required class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-primary focus:outline-none" />
+        </div>
+        <div>
+          <label for="contact" class="block font-medium">Contact Info (Phone or Email)</label>
+          <input type="text" id="contact" name="contact" required class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-primary focus:outline-none" />
+        </div>
+        <div>
+          <label for="reason" class="block font-medium">Reason for Request (optional)</label>
+          <textarea id="reason" name="reason" rows="3" class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-primary focus:outline-none"></textarea>
+        </div>
+        <div>
+          <label for="urgency" class="block font-medium">Urgency</label>
+          <select id="urgency" name="urgency" required class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-primary focus:outline-none">
+            <option value="true">Urgent</option>
+            <option value="false">Non-Urgent</option>
+          </select>
+        </div>
+
+        <button type="submit" class="w-full bg-primary hover:bg-red-700 text-white font-semibold py-3 rounded-lg transition">Submit Request</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-secondary text-red-800 text-center py-6 text-sm border-t border-red-200">
+    <p>&copy; 2025 LifeSaver Blood Bank. All rights reserved.</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('requestForm');
+      form?.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const user = JSON.parse(localStorage.getItem('user'));
+        const userEmail = user?.email;
+
+        if (!userEmail) {
+          alert('⚠️ You must be logged in to submit a request.');
+          return;
+        }
+
+        const data = {
+          name: document.getElementById('name').value,
+          bloodType: document.getElementById('bloodType').value,
+          location: document.getElementById('location').value,
+          contact: document.getElementById('contact').value,
+          reason: document.getElementById('reason').value,
+          urgent: document.getElementById('urgency').value === "true",
+          email: userEmail,
+        };
+
+        console.log('Submitting:', data); // For debugging
+
+        try {
+          const res = await fetch('http://localhost:5000/api/requests', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+
+          const result = await res.json();
+          alert(result.message || '✅ Request submitted successfully!');
+          if (res.ok) this.reset();
+        } catch (error) {
+          console.error('❌ Error submitting request:', error);
+          alert('❌ Something went wrong. Please try again.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

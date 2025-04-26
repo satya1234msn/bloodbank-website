@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - LifeSaver Blood Bank</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/common.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-red-600 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
+      <h1 class="text-lg font-semibold text-white">LifeSaver Blood Bank</h1>
+      <nav>
+        <ul class="flex gap-4 text-sm font-medium text-white">
+          <li><a href="index.html" class="hover:text-red-200">Home</a></li>
+          <li><a href="donate.html" class="hover:text-red-200">Donate</a></li>
+          <li><a href="request.html" class="hover:text-red-200">Request</a></li>
+          <li><a href="about.html" class="hover:text-red-200">About</a></li>
+          <li><a href="contact.html" class="hover:text-red-200">Contact</a></li>
+          <li><a href="signin.html" id="signinLink" class="hover:text-red-200">Sign In</a></li>
+          <li><a href="profile.html" id="profileLink" class="hover:text-red-200 hidden">My Profile</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  
+  
+
+  <!-- Main Content -->
+  <main class="py-12">
+    <div class="max-w-xl mx-auto bg-white shadow-lg rounded-xl p-8">
+      <h2 class="text-2xl font-semibold text-center mb-6">Create Your Account</h2>
+      <form id="signupForm" class="space-y-4">
+        <div>
+          <label for="fullName" class="block font-medium">Full Name</label>
+          <input type="text" id="fullName" name="fullName" required class="w-full border rounded px-3 py-2 mt-1" placeholder="Enter your full name" />
+        </div>
+
+        <div>
+          <label for="email" class="block font-medium">Email Address</label>
+          <input type="email" id="email" name="email" required class="w-full border rounded px-3 py-2 mt-1" placeholder="Enter your email" />
+        </div>
+
+        <div>
+          <label for="password" class="block font-medium">Password</label>
+          <input type="password" id="password" name="password" required class="w-full border rounded px-3 py-2 mt-1" placeholder="Create a password" />
+        </div>
+
+        <div>
+          <label for="confirmPassword" class="block font-medium">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required class="w-full border rounded px-3 py-2 mt-1" placeholder="Confirm your password" />
+        </div>
+
+        <div>
+          <label for="bloodType" class="block font-medium">Blood Type</label>
+          <select id="bloodType" name="bloodType" required class="w-full border rounded px-3 py-2 mt-1">
+            <option value="">Select your blood type</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="location" class="block font-medium">Location</label>
+          <input type="text" id="location" name="location" required class="w-full border rounded px-3 py-2 mt-1" placeholder="Enter your location" />
+        </div>
+
+        <button type="submit" class="w-full bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 transition">Sign Up</button>
+      </form>
+      <p class="mt-4 text-sm text-center">Already have an account? <a href="signin.html" class="text-red-600 hover:underline">Sign In</a></p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-red-100 text-center py-4 mt-12">
+    <p class="text-sm">&copy; 2025 LifeSaver Blood Bank. All rights reserved.</p>
+  </footer>
+
+  <!-- Signup Logic -->
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const data = {
+        fullName: document.getElementById('fullName').value,
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value,
+        confirmPassword: document.getElementById('confirmPassword').value,
+        bloodType: document.getElementById('bloodType').value,
+        location: document.getElementById('location').value
+      };
+
+      if (data.password !== data.confirmPassword) {
+        return alert('Passwords do not match.');
+      }
+
+      try {
+        const res = await fetch('http://localhost:5000/api/auth/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+        if (res.ok) {
+          localStorage.setItem('user', JSON.stringify(result.user));
+          window.location.href = 'profile.html';
+        } else {
+          alert('❌ ' + result.message);
+        }
+      } catch (error) {
+        alert('An error occurred. Please try again later.');
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>

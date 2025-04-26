@@ -1,0 +1,172 @@
+/* === donate.css | Clean and Elegant Blood Donation Form === */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #f8f9fa; /* Light gray background for a clean feel */
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #ff6f61; /* Soft light red */
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  color: #fff;
+  border-bottom: 2px solid #ff9b8f; /* Lighter red for border */
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffe0d6; /* Soft peach color for hover effect */
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  background-color: #f8f9fa;
+  flex-grow: 1;
+}
+
+.donor-registration {
+  background: #fff; /* White background for clean form */
+  padding: 3rem 2rem;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  color: #333;
+}
+
+.donor-registration h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-weight: 700;
+}
+
+.donor-registration p {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 2rem;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+form label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+input,
+select,
+textarea {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #ff6f61; /* Light red border on focus */
+  outline: none;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(255, 111, 97, 0.3); /* Soft red shadow on focus */
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+button.btn {
+  background: #ff6f61; /* Soft light red for button */
+  color: white;
+  padding: 1.2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  align-self: center;
+}
+
+button.btn:hover {
+  background: #ff9b8f; /* Lighter red on hover */
+  transform: translateY(-2px);
+}
+
+button.btn:active {
+  transform: translateY(1px);
+}
+
+footer {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  background-color: #ff6f61; /* Light red footer */
+  font-size: 1rem;
+  color: #fff;
+  border-top: 2px solid #ff9b8f;
+  margin-top: 3rem;
+  font-weight: 400;
+}
+
+footer a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #ffe0d6;
+}

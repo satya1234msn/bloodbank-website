@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - LifeSaver Blood Bank</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/common.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+</head>
+<body>
+
+  <header>
+    <h1>LifeSaver Blood Bank</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="request.html">Request</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="signin.html" id="signinLink">Sign In</a></li>
+        <li><a href="profile.html" id="profileLink">My Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="dashboard">
+      <h2>Your Donation History</h2>
+      <p>Thank you for your contributions! Below is a record of all your blood donations.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Date of Donation</th>
+            <th>Blood Type</th>
+            <th>Location</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Example Donation History -->
+          <tr>
+            <td>April 15, 2025</td>
+            <td>O+</td>
+            <td>Bhimavaram City Hospital</td>
+            <td>Completed</td>
+          </tr>
+          <tr>
+            <td>March 30, 2025</td>
+            <td>A-</td>
+            <td>Vijiyawada Blood Bank</td>
+            <td>Completed</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 LifeSaver Blood Bank. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

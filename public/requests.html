@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blood Requests - LifeSaver Blood Bank</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#dc2626',
+            secondary: '#fef2f2',
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-primary text-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center">
+      <h1 class="text-2xl font-bold">LifeSaver Blood Bank</h1>
+      <nav class="mt-2 sm:mt-0">
+        <ul class="flex flex-wrap gap-4 text-sm font-medium">
+          <li><a href="index.html" class="hover:text-gray-200">Home</a></li>
+          <li><a href="donate.html" class="hover:text-gray-200">Donate</a></li>
+          <li><a href="request.html" class="hover:text-gray-200">Request</a></li>
+          <li><a href="track.html" class="hover:text-gray-200">Track</a></li>
+          <li><a href="health.html" class="hover:text-gray-200">Health</a></li>
+          <li><a href="stories.html" class="hover:text-gray-200">Stories</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Requests Section -->
+  <main class="py-16 px-4">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold text-primary mb-6 text-center">All Blood Requests</h2>
+      <ul id="requestsList" class="space-y-6">
+        <!-- Requests will be inserted here -->
+      </ul>
+      <div id="noRequestsMessage" class="text-center text-gray-600 hidden">
+        <p>No blood requests at the moment.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-secondary text-red-800 text-center py-6 text-sm border-t border-red-200">
+    <p>&copy; 2025 LifeSaver Blood Bank. All rights reserved.</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    async function loadRequests() {
+      try {
+        const res = await fetch('http://localhost:5000/api/requests');
+        const requests = await res.json();
+        const container = document.getElementById('requestsList');
+        const noRequestsMessage = document.getElementById('noRequestsMessage');
+
+        // If no requests exist
+        if (requests.length === 0) {
+          container.innerHTML = '';
+          noRequestsMessage.classList.remove('hidden');
+          return;
+        }
+
+        // Hide "no requests" message if there are requests
+        noRequestsMessage.classList.add('hidden');
+
+        // Loop through the requests and display them
+        container.innerHTML = requests.map(req => {
+          // Handle undefined or missing 'urgent' fields
+          const isUrgent = req.urgent ? true : false; 
+
+          return `
+            <li class="p-6 bg-white rounded-lg shadow-md border-l-4 ${isUrgent ? 'border-red-600' : 'border-gray-300'}">
+              <div class="flex justify-between items-center mb-2">
+                <h3 class="text-xl font-semibold text-primary">${req.bloodType} Requested</h3>
+                <span class="${isUrgent ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800'} text-xs px-3 py-1 rounded-full font-semibold">
+                  ${isUrgent ? 'URGENT' : 'NON-URGENT'}
+                </span>
+              </div>
+              <p class="text-gray-700"><strong>Name:</strong> ${req.name}</p>
+              <p class="text-gray-700"><strong>Location:</strong> ${req.location}</p>
+              <p class="text-gray-700"><strong>Contact:</strong> ${req.contact}</p>
+              ${req.reason ? `<p class="text-gray-700"><strong>Reason:</strong> ${req.reason}</p>` : ''}
+              <p class="text-sm text-gray-500 mt-2">Requested on: ${new Date(req.createdAt).toLocaleString()}</p>
+            </li>
+          `;
+        }).join('');
+
+      } catch (error) {
+        console.error('Error fetching requests:', error);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', loadRequests);
+  </script>
+
+</body>
+</html>

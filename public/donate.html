@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Become a Donor - LifeSaver Blood Bank</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#dc2626',
+            secondary: '#fef2f2',
+          },
+        }
+      }
+    }
+  </script>
+  <script defer src="js/common.js"></script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-primary text-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center">
+      <h1 class="text-2xl font-bold">LifeSaver Blood Bank</h1>
+      <nav class="mt-2 sm:mt-0">
+        <ul class="flex flex-wrap gap-4 text-sm font-medium">
+          <li><a href="index.html" class="hover:text-gray-200">Home</a></li>
+          <li><a href="donate.html" class="hover:text-gray-200">Donate</a></li>
+          <li><a href="request.html" class="hover:text-gray-200">Request</a></li>
+          <li><a href="requests.html" class="hover:text-gray-200">Requests</a></li>
+          <li><a href="track.html" class="hover:text-gray-200">Track</a></li>
+          <li><a href="health.html" class="hover:text-gray-200">Health</a></li>
+          <li><a href="stories.html" class="hover:text-gray-200">Stories</a></li>
+          <li><a href="signin.html" id="signinLink" class="hover:text-gray-200">Sign In</a></li>
+          <li><a href="profile.html" id="profileLink" class="hover:text-gray-200">My Profile</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Highlight Section -->
+  <section class="bg-secondary py-16 px-4">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      <img src="https://img.freepik.com/free-vector/volunteer-concept-illustration_114360-2142.jpg" alt="Blood Donation Illustration" class="w-full md:w-1/2 rounded-lg shadow-lg">
+      <div>
+        <h2 class="text-4xl font-bold text-primary mb-4">Be Someone’s Lifeline ❤️</h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          Every 2 seconds, someone needs blood. Your donation could save a mother during childbirth, a child battling cancer, or someone in an accident.
+        </p>
+        <p class="mt-4 text-gray-700">
+          Join our mission at LifeSaver Blood Bank and become the reason someone gets a second chance at life.
+        </p>
+        <a href="#donorForm" class="inline-block mt-6 bg-primary hover:bg-red-700 text-white py-2 px-5 rounded-full transition">Fill Out the Form</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Donor Registration Form -->
+  <main class="py-16 px-4">
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-xl border border-red-100">
+      <h2 class="text-3xl font-bold text-primary mb-6 text-center">Donor Registration Form</h2>
+      <p class="text-center text-gray-600 mb-8">Please provide accurate information. We’ll reach out when someone needs you.</p>
+
+      <form id="donorForm" class="space-y-5">
+        <div>
+          <label for="firstName" class="block font-medium">First Name</label>
+          <input type="text" id="firstName" name="firstName" required class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-primary focus:outline-none" />
+        </div>
+        <div>
+          <label for="lastName" class="block font-medium">Last Name</label>
+          <input type="text" id="lastName" name="lastName" required class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-primary focus:outline-none" />
+        </div>
+        <div>
+          <label for="bloodType" class="block font-medium">Blood Type</label>
+          <select id="bloodType" name="bloodType" required class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-primary focus:outline-none">
+            <option value="">Select blood type</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+          </select>
+        </div>
+        <div>
+          <label for="location" class="block font-medium">Location (City/State)</label>
+          <input type="text" id="location" name="location" required class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-primary focus:outline-none" />
+        </div>
+        <div>
+          <label for="phone" class="block font-medium">Phone Number</label>
+          <input type="tel" id="phone" name="phone" required class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-primary focus:outline-none" />
+        </div>
+        <div>
+          <label for="healthHistory" class="block font-medium">Health History</label>
+          <textarea id="healthHistory" name="healthHistory" rows="3" placeholder="Any medical conditions? (optional)" class="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-primary focus:outline-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-primary hover:bg-red-700 text-white font-semibold py-3 rounded-lg transition">Submit</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-secondary text-red-800 text-center py-6 text-sm border-t border-red-200">
+    <p>&copy; 2025 LifeSaver Blood Bank. All rights reserved.</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    document.getElementById('donorForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const data = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        bloodType: document.getElementById('bloodType').value,
+        location: document.getElementById('location').value,
+        phone: document.getElementById('phone').value,
+        healthHistory: document.getElementById('healthHistory').value,
+      };
+      try {
+        const res = await fetch('http://localhost:5000/api/donors', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        alert(res.ok ? '✅ Thank you! Donor registered successfully.' : '❌ ' + result.message);
+        if (res.ok) this.reset();
+      } catch (err) {
+        alert('❌ Something went wrong. Please try again later.');
+        console.error(err);
+      }
+    });
+  </script>
+
+</body>
+</html>
