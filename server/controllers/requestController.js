@@ -1,4 +1,4 @@
-const Request = require('../models/Request'); // Assuming Request is the model for the blood requests
+const Request = require('../models/request'); // Assuming Request is the model for the blood requests
 
 const createRequest = async (req, res) => {
   try {
